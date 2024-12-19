@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Monthly Activity Report</h2>
+        <p>Dear {{ customer_name }},</p>
+        <p>Here is a summary of your service activity this month:</p>
+        <ul>
+            <li><strong>Total Requests:</strong> {{ total_requests }}</li>
+            <li><strong>Completed Requests:</strong> {{ closed_requests }}</li>
+            <li><strong>Pending Requests:</strong> {{ pending_requests }}</li>
+        </ul>
+        <h3>Service Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Professional</th>
+                    <th>Date of Request</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in service_requests %}
+                    <tr>
+                        <td>{{ request.service }}</td>
+                        <td>{{ request.professional }}</td>
+                        <td>{{ request.date_of_request }}</td>
+                        <td>{{ request.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Thank you for choosing our service platform!</p>
+        <p>Best regards,<br>Your Service Platform</p>
+    </div>
+</body>
+</html>

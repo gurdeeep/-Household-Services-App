@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Service Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f4f4f4; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Monthly Service Report</h1>
+    <p><strong>Report for:</strong> {{ month }}</p>
+    <h2>Summary</h2>
+    <ul>
+        <li>Total Requests: {{ total_requests }}</li>
+        <li>Closed Requests: {{ closed_requests }}</li>
+        <li>Pending Requests: {{ pending_requests }}</li>
+        <li>Canceled Requests: {{ canceled_requests }}</li>
+    </ul>
+    <h2>Service Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Total Requests</th>
+                <th>Closed</th>
+                <th>Pending</th>
+                <th>Canceled</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in service_stats %}
+            <tr>
+                <td>{{ stat.name }}</td>
+                <td>{{ stat.total_requests }}</td>
+                <td>{{ stat.closed_requests }}</td>
+                <td>{{ stat.pending_requests }}</td>
+                <td>{{ stat.canceled_requests }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

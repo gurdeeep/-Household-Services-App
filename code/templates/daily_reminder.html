@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Daily Reminder</h2>
+        <p>Dear {{ professional_name }},</p>
+        <p>You have the following pending service requests:</p>
+        <ul>
+            {% for request in pending_requests %}
+                <li>
+                    <strong>Customer:</strong> {{ request.customer }}<br>
+                    <strong>Service:</strong> {{ request.service }}<br>
+                    <strong>Date of Request:</strong> {{ request.date_of_request }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Please attend to these requests at your earliest convenience.</p>
+        <p>Best regards,<br>Your Service Platform</p>
+    </div>
+</body>
+</html>
